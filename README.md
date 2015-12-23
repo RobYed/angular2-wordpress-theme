@@ -1,16 +1,8 @@
-# Using AngularJS And WP REST API v2 Beta 9 In Your WordPress Theme
+# Angular2 Wordpress Theme
 
-This is the final project files from my tutorial post: [Using AngularJS And WP REST API In Your WordPress Theme](http://1fix.io/blog/2014/11/05/angularjs-json-api-wp-theme/). Even if you have no experience in AngularJS, as long as you’re comfortable with coding (and WordPress), now you can open your favorite code editor and work with me.
+This is a fork from  [Using AngularJS And WP REST API In Your WordPress Theme](http://1fix.io/blog/2014/11/05/angularjs-json-api-wp-theme/). Starting with Angular 1, this will be transformed to Angular 2.
 
-## Demo
-
-Coming Soon!
-
-## Installation
-
-Just install it like any WordPress theme.
-
-## My Tutorials On Building Themes With AngularJS and WP REST API
+## Other Tutorials On Building Themes With AngularJS and WP REST API by 1fix.io
 
 1. [Using AngularJS and JSON API in Your WordPress Theme](https://1fix.io/blog/2014/11/05/angularjs-json-api-wp-theme/): An introduction to use the WP REST API and AngularJS in a WordPress theme. I wrote it based on a tutorial video from [WordPress.tv – Eric Wolfe: Building a WordPress Theme Using AngularJS](http://wordpress.tv/2014/06/16/eric-w-building-a-wordpress-theme-using-angularjs/), but added my own flavors. This post is now listed on [Resources section at WP-API.org](http://wp-api.org/resources.html), which might lead some of you to this repository.
 
@@ -53,9 +45,6 @@ Are you looking for a solution to display post excerpt based on the <!--more--> 
 
 **More content to go. Stay tuned.**
 
-## Contact
-
-Shoot me an email: yoren [at] 1fix.io
 
 ## License, Copyright etc.
 
