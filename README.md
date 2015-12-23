@@ -1,6 +1,6 @@
 # Angular2 Wordpress Theme
 
-This is a fork from  [Using AngularJS And WP REST API In Your WordPress Theme](http://1fix.io/blog/2014/11/05/angularjs-json-api-wp-theme/). Starting with Angular 1, this will be transformed to Angular 2.
+Based on [angularjs-demo-theme](https://github.com/1fixdotio/angularjs-demo-theme) by [Yoren Chang](https://1fix.io). Starting with Angular 1, this will be transformed to Angular 2.
 
 ## Other Tutorials On Building Themes With AngularJS and WP REST API by 1fix.io
 
