@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngSanitize', 'slick']);
+var app = angular.module('wpApp', ['ngRoute', 'ngSanitize', 'slick']);
 
 //Config the route
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
@@ -6,31 +6,31 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($ro
 
 	$routeProvider
 		.when('/', {
-			templateUrl: myLocalized.partials + 'main.html',
+			templateUrl: 'templates/main.html',
 			controller: 'Main'
 		})
 		.when('/demo', {
-			templateUrl: myLocalized.partials + 'demo.html',
+			templateUrl: 'templates/demo.html',
 			controller: 'Main'
 		})
 		.when('/blog/:ID', {
-			templateUrl: myLocalized.partials + 'content.html',
+			templateUrl: 'templates/content.html',
 			controller: 'Content'
 		})
 		.when('/category/:slug/', {
-			templateUrl: myLocalized.partials + 'main.html',
+			templateUrl: 'templates/main.html',
 			controller: 'Category'
 		})
 		.when('/category/:slug/page/:page', {
-			templateUrl: myLocalized.partials + 'main.html',
+			templateUrl: 'templates/main.html',
 			controller: 'Category'
 		})
 		.when('/page/:page', {
-			templateUrl: myLocalized.partials + 'main.html',
+			templateUrl: 'templates/main.html',
 			controller: 'Paged'
 		})
 		.otherwise({
-			templateUrl: myLocalized.partials + '404.html',
+			templateUrl: 'templates/404.html',
 			controller: '404'
 		});
 
@@ -39,7 +39,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($ro
 			'request': function(config) {
 				config.headers = config.headers || {};
 				//add nonce to avoid CSRF issues
-				config.headers['X-WP-Nonce'] = myLocalized.nonce;
+				// config.headers['X-WP-Nonce'] = myLocalized.nonce;
 
 				return config;
 			}
@@ -122,7 +122,7 @@ app.directive('searchForm', function() {
 app.directive('postsNavLink', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: myLocalized.partials + 'posts-nav-link.html',
+		templateUrl: 'templates/posts-nav-link.html',
 		controller: ['$scope', '$element', '$routeParams', function($scope, $element, $routeParams) {
 			var currentPage = (!$routeParams.page) ? 1 : parseInt($routeParams.page),
 				linkPrefix = (!$routeParams.category) ? 'page/' : 'category/' + $routeParams.category + '/page/';
@@ -142,7 +142,7 @@ app.directive('postsNavLink', function() {
 app.directive('sayHello', function(){
 	return {
 		restrict: 'EA',
-		templateUrl: myLocalized.partials + 'say-hello.html',
+		templateUrl: 'templates/say-hello.html',
 		controller: ['WPService', function(WPService) {
 			WPService.getCurrentUser();
 		}]

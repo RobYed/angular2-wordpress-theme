@@ -6,7 +6,7 @@
 	<?php wp_head(); ?>
 </head>
 <body>
-	<div id="page" ng-app="app">
+	<div id="page" ng-app="wpApp">
 		<header>
 			<h1>
 				<a href="<?php echo home_url(); ?>">AngularJS Demo Theme</a>

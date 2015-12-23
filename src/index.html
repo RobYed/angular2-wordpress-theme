@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="#">
+	<title>Home | Angular2 Wordpress Theme</title>
+	<!-- wp_head(); -->
+    
+    <!-- build:css styles.css -->  
+    <!-- bower css dependencies -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="lib/slick-carousel/slick/slick-theme.css" />
+    <!-- endbower -->
+    
+    <!-- project css dependencies -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    
+    
+    <!-- build:js app.js -->
+    <!-- bower js dependencies -->
+    <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/slick-carousel/slick/slick.min.js"></script>
+    <script src="lib/angular-slick/dist/slick.js"></script>
+    <!-- endbower -->
+    
+    <!-- project js dependencies -->
+    <!-- inject:js -->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/WPService.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body>
+	<div id="page" ng-app="wpApp">
+		<header>
+			<h1>
+				<a href="#">AngularJS Wordpress Theme</a>
+			</h1>
+		</header>
+
+		<div ng-view></div>
+
+		<footer>
+			&copy; 2016
+		</footer>
+	</div>
+
+	<!-- wp_footer(); -->
+</body>
+</html>
