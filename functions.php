@@ -4,18 +4,18 @@ function my_scripts() {
 
 	wp_register_script(
 		'app-js',
-		get_stylesheet_directory_uri() . 'app.js'
+		get_stylesheet_directory_uri() . '/app.js'
 	);
 
 	wp_enqueue_script(
 		'scripts',
-		get_stylesheet_directory_uri() . 'app.js',
+		get_stylesheet_directory_uri() . '/app.js',
 		array( 'app-js')
 	);
 
 	wp_enqueue_style(
 		'app-css',
-		get_stylesheet_directory_uri() . 'style.css'
+		get_stylesheet_directory_uri() . '/style.css'
 	);
 
     /*
