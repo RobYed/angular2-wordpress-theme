@@ -13,20 +13,17 @@ var gulp = require('gulp'),
 	replace = require('gulp-replace'),
     filter = require('gulp-filter'),
     del = require('del'),
-	notify = require('gulp-notify');
+	notify = require('gulp-notify'),
+    gutil = require('gulp-util'),
+    ftp = require('gulp-ftp');
+    
+var config = require('./gulpconfig.json');
+var paths = config.paths;
+var angularModule = config.angularModule;
 
 var	browserSync = require('browser-sync').create();
 
-var paths = {
-	src: 'src/',
-    typescript: 'src/ts/**/*.ts',
-	js: 'src/js/**/*.js',
-	css: 'src/css/**/*.css',
-	temp: 'src/templates/**/*.html',
-	index: 'src/index.html',
-};
 
-var angularModule = 'wpApp';
 
 /**
  * MAIN GULP TASKS
@@ -38,6 +35,10 @@ gulp.task('serve', function(done) {
 
 gulp.task('build', function(done) {
     run('partials', 'minify', 'del:templatesjs', done);
+})
+
+gulp.task('deploy', function(done) {
+    run('build', 'upload', done);
 })
 
 gulp.task('inject', function () {
@@ -134,4 +135,15 @@ gulp.task('minify', function () {
 
 gulp.task('del:templatesjs', function (cb) {
   return del([ 'src/js/templates.js' ], cb);
+});
+ 
+gulp.task('upload', function () {
+	return gulp.src([ '*', '!src' ])
+        .pipe(ftp({
+            host: config.ftp.host,
+            user: config.ftp.user,
+            pass: config.ftp.password,
+            remotePath: config.ftp.path
+        }))
+        .pipe(gutil.noop());
 });

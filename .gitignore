@@ -1,4 +1,5 @@
 node_modules
+gulpconfig.json
 
 # Logs
 logs
