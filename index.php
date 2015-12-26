@@ -6,9 +6,6 @@
 	
     <base href="<?php $url_info = parse_url( home_url() ); echo trailingslashit( $url_info['path'] ); ?>">
     <?php wp_head(); ?>
-    
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/app.css"/>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/app.js"></script>
 </head>
 <body>
 	<div id="page" ng-app="wpApp">
