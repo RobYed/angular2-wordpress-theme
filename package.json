@@ -25,6 +25,7 @@
   "homepage": "https://github.com/RobYed/angular2-wordpress-theme#readme",
   "devDependencies": {
     "browser-sync": "^2.10.1",
+    "del": "^2.2.0",
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-filter": "^3.0.1",
     "gulp-inject": "^3.0.0",
