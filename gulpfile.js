@@ -89,7 +89,7 @@ gulp.task('partials', function() {
     file: 'templates.js',
     options: {
         module: angularModule,
-        root: 'src/templates/',
+        root: 'templates/',
         standalone: false
     }
   };
