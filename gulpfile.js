@@ -135,37 +135,3 @@ gulp.task('minify', function () {
 gulp.task('del:templatesjs', function (cb) {
   return del([ 'src/js/templates.js' ], cb);
 });
-
-gulp.task('test', function () {
-    var projectSources = gulp.src([
-			paths.js,
-			paths.css,
-            '!src/js/**/*.min.js'],
-			{read: false},
-			{relative: true});
-    var injectOptions = {
-		ignorePath: '/src/',
-        addRootSlash: false
-	};
-
-  return gulp.src( paths.index )
-		// inject bower dependencies
-		.pipe(wiredep({
-            directory: 'src/lib',
-            devDependencies: false,
-            ignorePath: '/src',
-        }))
-        // inject project dependencies
-        .pipe(inject(projectSources, injectOptions))
-        // minify and concatenate
-        /*
-        .pipe(usemin({
-            css: [minifyCss(), 'concat'],
-            js: [ngAnnotate(), uglify()],
-            path: 'src/'
-        }))
-        .pipe(filter(['*', '!index.html'], {restore: true}))
-        */
-        // copy result to root folder
-        .pipe(gulp.dest('test'));
-});

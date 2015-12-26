@@ -2,6 +2,7 @@
 
 function my_scripts() {
 
+    /*
 	wp_register_script(
 		'app-js',
 		get_stylesheet_directory_uri() . '/app.js'
@@ -18,7 +19,6 @@ function my_scripts() {
 		get_stylesheet_directory_uri() . '/style.css'
 	);
 
-    /*
 	wp_localize_script(
 		'my-scripts',
 		'myLocalized',
