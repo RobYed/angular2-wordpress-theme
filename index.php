@@ -2,14 +2,14 @@
 <html>
 <head>
 	<base href="<?php $url_info = parse_url( home_url() ); echo trailingslashit( $url_info['path'] ); ?>">
-	<title>Home | AngularJS Demo Theme</title>
+	<title>Home | Angular2 Wordpress Theme</title>
 	<?php wp_head(); ?>
 </head>
 <body>
 	<div id="page" ng-app="wpApp">
 		<header>
 			<h1>
-				<a href="<?php echo home_url(); ?>">AngularJS Demo Theme</a>
+				<a href="<?php echo home_url(); ?>">Angular2 Wordpress Theme</a>
 			</h1>
 		</header>
 

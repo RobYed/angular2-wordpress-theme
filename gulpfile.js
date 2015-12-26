@@ -5,10 +5,13 @@ var gulp = require('gulp'),
 	inject = require('gulp-inject'),
 	run = require('run-sequence'),
    	templateCache = require('gulp-angular-templatecache'),
+    minifyHTML = require('gulp-minify-html'),
+    ngAnnotate = require('gulp-ng-annotate'),
 	usemin = require('gulp-usemin'),
 	uglify = require('gulp-uglify'),
 	minifyCss = require('gulp-minify-css'),
 	replace = require('gulp-replace'),
+    filter = require('gulp-filter'),
 	notify = require('gulp-notify');
 
 var	browserSync = require('browser-sync').create();
@@ -28,11 +31,15 @@ var angularModule = 'wpApp';
  * MAIN GULP TASKS
  */
 
-gulp.task('serve:dev', function(callback) {
-	run('inject:dev', 'browsersync:dev', callback);
+gulp.task('serve', function(done) {
+	run('inject', 'browsersync', done);
 });
 
-gulp.task('inject:dev', function () {
+gulp.task('build', function(done) {
+    run('partials', 'minify', done);
+})
+
+gulp.task('inject', function () {
 	var projectSources = gulp.src([
 			paths.js,
 			paths.css,
@@ -52,7 +59,7 @@ gulp.task('inject:dev', function () {
     .pipe(gulp.dest(paths.src)); // write to www folder
 });
 
-gulp.task('browsersync:dev', function() {
+gulp.task('browsersync', function() {
 	var options = {
     server: {
 			baseDir: 'src',
@@ -68,4 +75,58 @@ gulp.task('browsersync:dev', function() {
     ]
   };
   browserSync.init(options);
+});
+
+gulp.task('partials', function() {
+  var minifyOpts = {
+	empty: true,
+    spare: true,
+    quotes: true
+  };
+
+  var tmpCacheOpts = {
+    file: 'templates.js',
+    options: {
+        module: angularModule,
+        root: 'src/templates/',
+        standalone: false
+    }
+  };
+
+  return gulp.src( paths.temp )
+    .pipe(minifyHTML(minifyOpts)) // minify angular html templates
+    .pipe(templateCache(tmpCacheOpts.file, tmpCacheOpts.options)) // convert html to angular template js
+    .pipe(gulp.dest( paths.src + 'js' ));
+});
+
+gulp.task('minify', function () {
+    var projectSources = gulp.src([
+			paths.js,
+			paths.css,
+            '!src/js/**/*.min.js'],
+			{read: false},
+			{relative: true});
+    var injectOptions = {
+		ignorePath: '/src/',
+        addRootSlash: false
+	};
+
+  return gulp.src( paths.index )
+		// inject bower dependencies
+		.pipe(wiredep({
+            directory: 'src/lib',
+            devDependencies: false,
+            ignorePath: '/src',
+        }))
+        // inject project dependencies
+        .pipe(inject(projectSources, injectOptions))
+        // minify and concatenate
+        .pipe(usemin({
+            css: [minifyCss(), 'concat'],
+            js: [ngAnnotate(), uglify()],
+            path: 'src/'
+        }))
+        .pipe(filter(['*', '!index.html'], {restore: true}))
+        // copy result to root folder
+        .pipe(gulp.dest('.'));
 });
