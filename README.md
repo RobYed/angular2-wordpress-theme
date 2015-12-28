@@ -5,23 +5,23 @@ Based on [angularjs-demo-theme](https://github.com/1fixdotio/angularjs-demo-them
 ## Build
 
 ### gulpconfig.json
-{
-    "paths": {
-        "src": "src/",
-        "typescript": "src/ts/**/*.ts",
-        "js": "src/js/**/*.js",
-        "css": "src/css/**/*.css",
-        "temp": "src/templates/**/*.html",
-        "index": "src/index.html"
-    },
-    "ftp": {
-        "host": "<your ftp server address",
-        "user": "<your ftp user name>",
-        "password": "<your ftp password>",
-        "path": "<path to your wordpress installation>/wp-content/themes/angular2-wordpress-theme-angular2"
-    },
-    "angularModule": "wpApp"
-}
+    {
+        "paths": {
+            "src": "src/",
+            "typescript": "src/ts/**/*.ts",
+            "js": "src/js/**/*.js",
+            "css": "src/css/**/*.css",
+            "temp": "src/templates/**/*.html",
+            "index": "src/index.html"
+        },
+        "ftp": {
+            "host": "<your ftp server address",
+            "user": "<your ftp user name>",
+            "password": "<your ftp password>",
+            "path": "<path to your wordpress installation>/wp-content/themes/angular2-wordpress-theme-angular2"
+        },
+        "angularModule": "wpApp"
+    }
 
 
 ## License, Copyright etc.
