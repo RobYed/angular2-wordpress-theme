@@ -15,7 +15,8 @@ var gulp = require('gulp'),
     del = require('del'),
 	notify = require('gulp-notify'),
     gutil = require('gulp-util'),
-    ftp = require('gulp-ftp');
+    ftp = require('gulp-ftp'),
+    jeditor = require('gulp-json-editor');
     
 var config = require('./gulpconfig.json');
 var	browserSync = require('browser-sync').create();
@@ -165,3 +166,22 @@ gulp.task('upload', function () {
         }))
         .pipe(gutil.noop());
 });
+
+gulp.task('update-version', function(done) {
+    var version = require('./package.json').version;
+    
+    // write version to bower.json
+    gulp.src('bower.json')
+        .pipe(jeditor(function(bowerjson) {
+            bowerjson.version = version;
+            return bowerjson;
+        }))
+        .pipe(gulp.dest('.'));
+        
+    // TODO: write version to style.css
+    gulp.src('style.css')
+        .pipe(replace(/Version: \d{1,2}.\d{1,2}.\d{1,2}/, 'Version: '+version ))
+        .pipe(gulp.dest('.'));
+        
+    done();
+})
