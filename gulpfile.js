@@ -18,11 +18,10 @@ var gulp = require('gulp'),
     ftp = require('gulp-ftp');
     
 var config = require('./gulpconfig.json');
-var paths = config.paths;
-var angularModule = config.angularModule;
-
 var	browserSync = require('browser-sync').create();
 
+var paths = config.paths;
+var angularModule = config.angularModule;
 
 
 /**
@@ -61,7 +60,7 @@ gulp.task('inject', function () {
     .pipe(gulp.dest(paths.src)); // write to www folder
 });
 
-gulp.task('browsersync', function() {
+gulp.task('watch:dev', function() {
 	var options = {
     server: {
 			baseDir: 'src',
@@ -77,6 +76,25 @@ gulp.task('browsersync', function() {
     ]
   };
   browserSync.init(options);
+  
+  var onUpdate = ['inject', browserSync.reload];
+  
+  gulp.watch('src/**/*.js', onUpdate);
+  gulp.watch('src/**/*.css', onUpdate);
+  gulp.watch('src/**/*.html', onUpdate);
+});
+
+gulp.task('watch:prod', function() {
+  var options = {
+    proxy: "http://nublado.de/blog/"
+  };
+  browserSync.init(options);
+  
+  var onUpdate = ['deploy', browserSync.reload];
+  
+  gulp.watch('src/**/*.js', onUpdate);
+  gulp.watch('src/**/*.css', onUpdate);
+  gulp.watch('src/**/*.html', onUpdate);
 });
 
 gulp.task('partials', function() {
